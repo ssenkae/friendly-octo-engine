@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -29,75 +29,290 @@
 
     <link rel="icon" href="/img/teto.png" type="image/png">
     <title>sen.rip</title>
+
     <style>
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            user-select: none;
+        }
+
+        html,
+        body {
+            height: 100%;
         }
 
         body {
-            background-color: #000;
-            color: #fff;
-            font-family: 'Courier New', monospace;
+            font-family: Monospace, monospace;
+            background: #000000;
+            color: #eee;
+            line-height: 1.45;
+            padding: 40px 20px;
+        }
+
+        .wrap {
+            max-width: 940px;
+            margin: 0 auto;
+        }
+
+        header {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
+            flex-wrap: wrap;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 28px;
         }
 
-        .container {
-            text-align: center;
-            padding: 3rem 2rem;
-            max-width: 600px;
+        .brand {
+            font-size: 20px;
         }
 
-        .domain {
-            font-size: 4rem;
-            font-weight: bold;
-            margin-bottom: 2rem;
-            letter-spacing: 3px;
+        .brand .title {
+            font-weight: 700;
         }
 
-        .message {
-            font-size: 1.2rem;
-            line-height: 2;
+        .brand .subtitle {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            margin-top: 4px;
         }
 
-        .message a {
-            color: #fff;
+        nav {
+            display: flex;
+            gap: 18px;
+        }
+
+        nav a {
+            text-decoration: none;
+            font-size: 14px;
+            color: #eee;
+        }
+
+        nav a:hover {
             text-decoration: underline;
         }
 
-        .message a:hover {
-            color: #fff;
+        section {
+            margin-bottom: 28px;
         }
 
-        @media (max-width: 768px) {
-            .domain {
-                font-size: 2.5rem;
+        h1 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin: 14px 0 8px;
+        }
+
+        p.lead {
+            color: #eee;
+            margin-bottom: 12px;
+        }
+
+        .about {
+            background: transparent;
+        }
+
+        .gallery-subsection {
+            margin-top: 20px;
+        }
+
+        .fav-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .fav-buttons a img {
+            width: 100%;
+            transition: transform 0.1s ease;
+            cursor: pointer;
+        }
+
+        .fav-buttons a img:hover {
+            transform: scale(1.05);
+        }
+
+        #contact a {
+            display: block;
+            font-size: 14px;
+            text-decoration: none;
+            color: #eee;
+            margin-bottom: 8px;
+        }
+
+        #contact a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            margin-top: 34px;
+            font-size: 13px;
+            color: #666;
+            border-top: 1px dashed #e6e6e6;
+            padding-top: 16px;
+        }
+
+        .mono {
+            font-family: monospace;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
             }
 
-            .message {
-                font-size: 1rem;
+            nav {
+                margin-top: 12px;
             }
 
-            .container {
-                padding: 2rem 1rem;
+            .brand .title {
+                font-size: 18px;
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="domain">sen.rip</div>
-        <div class="message">
-            this site is under construction.<br>
-            talk with me on <a href="https://discord.com/user/__sen_">discord</a>.
-        </div>
+    <div class="wrap">
+        <header>
+            <div class="brand">
+                <span class="title">sen.rip</span>
+                <span class="subtitle" id="subtitle">yapping & other oddities</span>
+            </div>
+            <nav>
+                <a href="#home">home</a>
+                <a href="#gallery">gallery</a>
+                <a href="#contact">contact</a>
+            </nav>
+        </header>
+
+        <main>
+            <section id="home" class="about">
+                <p class="lead">one day i will write something here</p>
+
+                <p class="lead">check out the contact tab to get in touch with me :3</p>
+            </section>
+
+            <section id="gallery" class="gallery">
+                <h1>banners!</h1>
+
+                <div class="gallery-subsection">
+                    <h2>friends</h2>
+                    <div class="fav-buttons">
+                        <a href="https://jesx.dev/" target="_blank" title="Jesx"><img
+                                src="https://jesx.dev/images/buttons/footer/jesx.gif" alt="Jesx's button"></a>
+                        <a href="https://ohaa.xyz/" target="_blank" title="Oha"><img
+                                src="https://ohaa.xyz/badges/oha.png" alt="Oha's button"></a>
+                        <a href="https://chan.kiwigrape.io/" target="_blank" title="kgChan"><img
+                                src="https://kiwigrape.io/files/kgChan.png" alt="kgChan button"></a>
+
+                    </div>
+                    <h2>my button!</h2>
+                    <div class="fav-buttons">
+                        <a href="#" id="copy-button" title="sen.wtf">
+                            <img src="/media/button.gif" alt="Sen's button">
+                        </a>
+                    </div>
+                    <p>click it to copy!</p>
+                </div>
+
+            </section>
+
+            <section id="contact">
+                <h1>want to find me?</h1>
+                <a href="https://discord.com/users/374589381752913930" target="_blank">discord</a>
+                <a href="https://steamcommunity.com/id/senunderscore/" target="_blank">steam</a>
+                <a href="https://github.com/senunderscore" target="_blank">the hub</a>
+            </section>
+
+        </main>
+
+        <footer>
+            <div class="mono">sen.wtf - no rights reserved ^^"</div>
+        </footer>
     </div>
+
+    <script>
+        try {
+            const name = localStorage.getItem('siteName') || 'Sen';
+            document.querySelector('.brand .title').textContent = name;
+        } catch (e) { }
+
+        const copyMyButton = document.getElementById('copy-button');
+
+        if (copyMyButton) {
+            copyMyButton.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                const buttonthingy = "<a href='https://sen.rip/'><img src='https://sen.rip/media/button.gif' alt='sen.wtf'/></a>";
+
+                navigator.clipboard.writeText(buttonthingy)
+            });
+        }
+
+        const sections = document.querySelectorAll('main > section');
+        const navLinks = document.querySelectorAll('nav a');
+
+        function showSection(id) {
+            sections.forEach(sec => sec.style.display = sec.id === id ? 'block' : 'none');
+        }
+
+        const initialSection = window.location.hash ? window.location.hash.substring(1) : 'home';
+        showSection(initialSection);
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                const target = link.getAttribute('href').substring(1);
+                showSection(target);
+                window.history.pushState(null, '', `#${target}`);
+            });
+        });
+
+        const strings = [
+            'i see you but i ignore you',
+            'by any means necessary',
+            'you never understood what i did',
+            'huh. okay. moving on.',
+            'THE WORLD HAS RESERVED NOTHING FOR YOU',
+            'YOU\'RE THE CAPTAIN NOW',
+            'wild',
+            'bold of you to assume i am awake',
+            'experiencing technical difficulties between chair and screen',
+            'i cannot hear you over the sound of AAAAAAAAAAAAAAAAAAAA',
+            'certified catboy',
+            'FUCK.',
+            'spilled monster on my keeb',
+            'kanker motorsport',
+            'never let a number be your legacy :keycap_ten:',
+            'living, laughing, losing my shit',
+            'achieving nothing with great success',
+            'having a time',
+            'aggressively doing nothing',
+            'thriving (derogatory)',
+            'losing it (affectionate)',
+            'WELCOME TO YOUR PERSONAL SIMULATION',
+            'assassinated my own sleep schedule',
+            'detonated a VM for fun',
+            'immolated a keyboard with caffeine',
+            'thank you kind stranger!',
+            'sentenced to 10 minutes of twitter!'
+        ];
+
+        window.onload = function () {
+            const element = document.getElementById('subtitle');
+            const index = Math.floor(Math.random() * strings.length);
+            element.innerText = strings[index];
+        };
+    </script>
 </body>
 
 </html>
