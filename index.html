@@ -1,97 +1,381 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="one fo da gang :3 two fo da fame ^o^ three fo da name :DDD for to da grave @_@" />
-    <meta name="keywords" content="Sen, personal website, blog" />
+    <meta name="description" content="Sen's personal space on the web." />
+    <meta name="keywords" content="Sen, personal website" />
     <meta name="author" content="Sen" />
-    <meta name="robots" content="noindex, nofollow" />
-    <meta name="googlebot" content="noindex, nofollow" />
-    <meta name="theme-color" content="#ffffff" />
-    <meta name="application-name" content="Sen's website" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#000000" />
 
     <meta property="og:title" content="Sen" />
-    <meta property="og:description"
-        content="one fo da gang :3 two fo da fame ^o^ three fo da name :DDD for to da grave @_@" />
-    <meta property="og:image" content="https://sen.rip/img/teto.png" />
+    <meta property="og:description" content="Sen's personal space on the web." />
     <meta property="og:url" content="https://sen.rip" />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="en_US" />
 
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Sen" />
-    <meta name="twitter:description"
-        content="one fo da gang :3 two fo da fame ^o^ three fo da name :DDD for to da grave @_@" />
-    <meta name="twitter:image" content="https://sen.rip/img/teto.png" />
-    <meta name="twitter:creator" content="@sen" />
+    <meta name="twitter:description" content="Sen's personal space on the web." />
 
-    <link rel="icon" href="/img/teto.png" type="image/png">
-    <title>sen.rip</title>
+    <link rel="icon" href="/img/teto.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <title>sen</title>
     <style>
+        :root {
+            --ui-scale: 1.25;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html,
         body {
-            background-color: #0a0a0a;
-            color: #ffffff;
-            font-family: 'Courier New', monospace;
-            min-height: 100vh;
+            height: 100%;
+            background: #1a1a1a;
+            color: #c7c7c7;
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 16px;
+        }
+
+        body {
             display: flex;
-            justify-content: center;
             align-items: center;
-            padding: 40px 20px;
+            justify-content: center;
+            padding: 16px;
+        }
+
+        a:not(.link):not(.status-link),
+        a:not(.link):not(.status-link):visited,
+        a:not(.link):not(.status-link):hover {
+            color: #8fb3ff;
         }
 
         .container {
-            display: flex;
-            gap: 6vw;
-            align-items: center;
+            width: 100%;
+            max-width: 350px;
+            transform: scale(var(--ui-scale));
+            transform-origin: center center;
         }
 
-        .socials {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2vw;
+        .card {
+            background: #2a2a2a;
+            border: 2px solid #404040;
+            padding: 12px;
+            margin-bottom: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
 
-        .social-link {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 1.4vw;
+        .header {
+            text-align: center;
+            margin-bottom: 24px;
         }
 
-        .social-link:hover {
-            opacity: 0.6;
+        .header h1 {
+            font-size: 32px;
+            color: #fff;
+            font-weight: bold;
+            margin-bottom: 4px;
+            letter-spacing: 2px;
         }
 
-        .message {
-            text-align: left;
-        }
-
-        .message h1 {
-            font-size: 2.4vw;
-            font-weight: normal;
-            margin-bottom: 0.8vw;
-        }
-
-        .message p {
-            font-size: 1.4vw;
+        .header p {
+            font-size: 12px;
             color: #888;
+            margin-bottom: 6px;
+        }
+
+        .header-status {
+            display: inline-block;
+            font-size: 10px;
+            padding: 4px 8px;
+            background: #1a1a1a;
+            border: 1px solid #404040;
+            color: #666;
+            border-radius: 2px;
+        }
+
+        .status-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px;
+            background: #232323;
+            border-left: 4px solid #404040;
+        }
+
+        .status-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: background 0.2s ease;
+        }
+
+        .status-link:hover .status-section {
+            background: #1a1a1a;
+        }
+
+        .status-avatar {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            border: 2px solid #404040;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .status-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+        }
+
+        .status-indicator {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid #232323;
+        }
+
+        .status-indicator.online {
+            background: #3d905a;
+        }
+
+        .status-indicator.idle {
+            background: #e8af47;
+        }
+
+        .status-indicator.dnd {
+            background: #da3e44;
+        }
+
+        .status-indicator.offline {
+            background: #84858d;
+        }
+
+        .status-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .status-name {
+            color: #fff;
+            font-weight: bold;
+            font-size: 14px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .status-detail {
+            color: #888;
+            font-size: 11px;
+            margin-top: 1px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .section-title {
+            font-size: 11px;
+            color: #777;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .links {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .link {
+            padding: 8px 10px;
+            background: #232323;
+            border: 1px solid #404040;
+            color: #c7c7c7;
+            text-decoration: none;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 40px;
+        }
+
+        .link:hover {
+            background: #2f2f2f;
+            color: #fff;
+            border-color: #505050;
+        }
+
+        .link-arrow {
+            display: none;
+        }
+
+        .link[href*="steamcommunity.com"]:hover {
+            background: #1f2733;
+            color: #fff;
+            border-color: #1f2733;
+        }
+
+        .link[href*="twitter.com"]:hover {
+            background: #2a7fb8;
+            color: #fff;
+            border-color: #2a7fb8;
+        }
+
+        .link[href*="youtube.com"]:hover {
+            background: #aa2a2a;
+            color: #fff;
+            border-color: #aa2a2a;
+        }
+
+        .link[href*="discord.com"]:hover {
+            background: #4d59c7;
+            color: #fff;
+            border-color: #4d59c7;
+        }
+
+        .link[href*="github.com"]:hover {
+            background: #2d3646;
+            color: #fff;
+            border-color: #2d3646;
+        }
+
+        .link[href*="bsky.social"]:hover,
+        .link[href*="bsky.app"]:hover {
+            background: #2f73c8;
+            color: #fff;
+            border-color: #2f73c8;
+        }
+
+        .activity-item {
+            padding: 0;
+            background: transparent;
+            border-left: none;
+            margin-bottom: 4px;
+        }
+
+        .activity-item:first-child {
+            margin-top: 4px;
+        }
+
+        .activity-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .activity-type {
+            font-size: 10px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
+        }
+
+        .activity-name {
+            color: #fff;
+            font-weight: bold;
+            font-size: 13px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .activity-details {
+            color: #888;
+            font-size: 11px;
+            margin-top: 1px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .about-section {
+            line-height: 1.5;
+            color: #aaa;
+            font-size: 12px;
+        }
+
+        .about-section p {
+            margin-bottom: 4px;
+        }
+
+        .about-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .stat-box {
+            background: #232323;
+            border: 1px solid #404040;
+            padding: 8px;
+        }
+
+        .stat-label {
+            font-size: 10px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
+        }
+
+        .stat-value {
+            font-size: 16px;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .divider {
+            height: 1px;
+            background: #404040;
+            margin: 12px 0;
+        }
+
+
+
+        .loading,
+        .error {
+            padding: 8px;
+            text-align: center;
+            color: #888;
+            font-size: 12px;
+        }
+
+        .error {
+            color: #f04747;
         }
 
         @media (max-width: 600px) {
             .container {
-                flex-direction: column;
-                gap: 8vw;
+                max-width: 100%;
             }
 
-            .message {
-                text-align: center;
+            .header h1 {
+                font-size: 28px;
+            }
+
+            .card {
+                padding: 16px;
             }
         }
     </style>
@@ -99,18 +383,167 @@
 
 <body>
     <div class="container">
-        <div class="socials">
-            <a href="https://github.com/senunderscore" class="social-link">github</a>
-            <a href="https://steamcommunity.com/profiles/76561198884824734/" class="social-link">discord</a>
-            <a href="https://steamcommunity.com/profiles/76561198884824734/" class="social-link">steam</a>
-            <a href="https://www.youtube.com/@senunderscore" class="social-link">youtube</a>
+        <div class="card">
+            <div id="discordStatus">
+                <div class="loading">connecting...</div>
+            </div>
+            <div id="spotifySection" style="display: none; margin-top: 12px;">
+                <div class="section-title">Now Playing</div>
+                <div id="spotifyStatus"></div>
+            </div>
         </div>
 
-        <div class="message">
-            <h1>under construction</h1>
-            <p>check back soon</p>
+        <div class="card">
+            <div class="section-title">About</div>
+            <div class="about-section">
+                <p>I am Sen, a 21-year old idiot with an obsession for computers.</p>
+                <p>I make dumb bots and random projects in my free time, such as <a href="https://github.com/senunderscore/cro">Cro</a> and <a href="https://github.com/senunderscore/Common">Common</a></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-title">Links</div>
+            <div class="links">
+                <a href="https://discord.com/user/374589381752913930" class="link" target="_blank">
+                    <span>discord</span>
+                </a>
+                <a href="https://github.com/senunderscore" class="link" target="_blank">
+                    <span>github</span>
+                </a>
+                <a href="https://steamcommunity.com/profiles/76561198884824734/" class="link" target="_blank">
+                    <span>steam</span>
+                </a>
+                <a href="https://www.youtube.com/@senunderscore" class="link" target="_blank">
+                    <span>youtube</span>
+                </a>
+                <a href="https://bsky.app/profile/sen.rip/" class="link" target="_blank">
+                    <span>bsky</span>
+                </a>
+                <a href="https://twitter.com/senunderscore" class="link" target="_blank">
+                    <span>twitter</span>
+                </a>
+            </div>
         </div>
     </div>
-</body>
 
-</html>
+    <script>
+        const CONFIG = {
+            discordUserId: '374589381752913930',
+        };
+
+        let ws;
+        let heartbeatInterval;
+
+        function connectLanyard() {
+            console.log('Connecting to Lanyard...');
+            ws = new WebSocket('wss://api.lanyard.rest/socket');
+
+            ws.onopen = () => {
+                console.log('Connected to Lanyard');
+            };
+
+            ws.onmessage = (event) => {
+                const data = JSON.parse(event.data);
+
+                if (data.op === 1) {
+                    ws.send(JSON.stringify({
+                        op: 2,
+                        d: {
+                            subscribe_to_id: CONFIG.discordUserId
+                        }
+                    }));
+
+                    if (heartbeatInterval) clearInterval(heartbeatInterval);
+                    heartbeatInterval = setInterval(() => {
+                        if (ws.readyState === WebSocket.OPEN) {
+                            ws.send(JSON.stringify({ op: 3 }));
+                        }
+                    }, data.d.heartbeat_interval);
+
+                } else if (data.op === 0) {
+                    updateDiscordStatus(data.d);
+                    updateSpotifyStatus(data.d);
+                }
+            };
+
+            ws.onerror = (error) => {
+                console.error('Lanyard error:', error);
+                document.getElementById('discordStatus').innerHTML = '<div class="error">connection failed</div>';
+                document.getElementById('spotifyStatus').innerHTML = '<div class="error">connection failed</div>';
+            };
+
+            ws.onclose = () => {
+                console.log('Disconnected from Lanyard, reconnecting in 3s...');
+                if (heartbeatInterval) clearInterval(heartbeatInterval);
+                setTimeout(connectLanyard, 3000);
+            };
+        }
+
+        function updateDiscordStatus(presence) {
+            const container = document.getElementById('discordStatus');
+
+            if (!presence?.discord_user) {
+                container.innerHTML = '<div class="error">no data</div>';
+                return;
+            }
+
+            const user = presence.discord_user;
+            const avatarUrl = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=128`;
+            const status = presence.discord_status;
+
+            let activityHtml = '';
+            if (presence.activities && presence.activities.length > 0) {
+                const activities = presence.activities.filter(a => a.type !== 4 && a.type !== 2);
+                if (activities.length > 0) {
+                    activities.forEach(activity => {
+                        const activityType = ['Playing', 'Streaming', 'Listening to', 'Watching', 'Custom', 'Competing in'][activity.type] || 'Playing';
+                        activityHtml += `<div class="status-detail">${activityType}: ${activity.name}</div>`;
+                    });
+                }
+            }
+
+            let html = `
+                <a href="https://discord.com/users/${user.id}" target="_blank" class="status-link">
+                    <div class="status-section">
+                        <div class="status-avatar">
+                            <img src="${avatarUrl}" alt="avatar">
+                            <div class="status-indicator ${status}"></div>
+                        </div>
+                        <div class="status-content">
+                            <div class="status-name">${user.display_name}</div>
+                            <div class="status-detail">@${user.username}</div>
+                            ${activityHtml}
+                        </div>
+                    </div>
+                </a>
+            `;
+
+            container.innerHTML = html;
+        }
+
+        function updateSpotifyStatus(presence) {
+            const container = document.getElementById('spotifyStatus');
+            const section = document.getElementById('spotifySection');
+
+            if (presence?.spotify) {
+                const spotify = presence.spotify;
+                container.innerHTML = `
+                    <div class="status-section" style="background: transparent; border-left: none; padding: 0;">
+                        <div class="status-avatar" style="border-radius: 0; width: 44px; height: 44px;">
+                            <img src="${spotify.album_art_url}" alt="album" style="border-radius: 0;">
+                        </div>
+                        <div class="status-content">
+                            <div class="status-name">${spotify.song}</div>
+                            <div class="status-detail">${spotify.artist}</div>
+                        </div>
+                    </div>
+                `;
+                section.style.display = 'block';
+            } else {
+                section.style.display = 'none';
+            }
+        }
+
+        connectLanyard();
+    </script>
+</body>
