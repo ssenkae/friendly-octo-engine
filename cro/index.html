@@ -4,26 +4,30 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Cro Bot Documentation" />
-    <meta name="keywords" content="Cro, bot, documentation" />
+    <meta name="description" content="Cro bot documentation and links." />
+    <meta name="keywords" content="Cro, bot, docs" />
     <meta name="author" content="Sen" />
-    <meta name="robots" content="noindex, nofollow" />
-    <meta name="googlebot" content="noindex, nofollow" />
+    <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#000000" />
-    <meta name="application-name" content="Cro Docs" />
 
     <meta property="og:title" content="Cro Docs" />
-    <meta property="og:description" content="Cro Bot Documentation" />
+    <meta property="og:description" content="Cro bot documentation and links." />
     <meta property="og:url" content="https://sen.rip/cro" />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="en_US" />
 
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Cro Docs" />
-    <meta name="twitter:description" content="Cro Bot Documentation" />
+    <meta name="twitter:description" content="Cro bot documentation and links." />
 
     <title>cro docs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
     <style>
+        :root {
+            --ui-scale: 1.25;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -31,69 +35,216 @@
         }
 
         body {
-            background-color: #000;
+            background: #000;
             color: #fff;
-            font-family: 'Courier New', monospace;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            font-family: 'Inter', system-ui, sans-serif;
             min-height: 100vh;
-            padding: 20px;
+            display: grid;
+            place-items: center;
+            padding: 30px;
         }
 
-        .container {
-            text-align: center;
-            padding: 3rem 2rem;
-            max-width: 600px;
+        .site {
+            width: min(1040px, 100%);
+            border: 1px solid #fff;
+            padding: clamp(28px, 5vw, 56px);
+            text-transform: lowercase;
+            transform: scale(var(--ui-scale));
+            transform-origin: center center;
         }
 
-        .domain {
-            font-size: 4rem;
-            font-weight: bold;
-            margin-bottom: 2rem;
-            letter-spacing: 3px;
+        .site-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 16px;
+            margin-bottom: 34px;
         }
 
-        .message {
-            font-size: 1.2rem;
-            line-height: 2;
+        .brand {
+            font-size: clamp(1.45rem, 2.8vw, 2.35rem);
+            font-weight: 600;
+            letter-spacing: 0.02em;
         }
 
-        .message a {
+        .subtitle {
+            color: #bcbcbc;
+            font-size: 1rem;
+        }
+
+        .switcher {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 34px;
+        }
+
+        .switch-btn {
+            border: 1px solid #fff;
+            background: transparent;
             color: #fff;
-            text-decoration: underline;
+            padding: 11px 16px;
+            font: inherit;
+            font-size: 0.98rem;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease;
         }
 
-        .message a:hover {
+        .switch-btn:hover,
+        .switch-btn:focus-visible {
+            background: #fff;
+            color: #000;
+            outline: none;
+        }
+
+        .switch-btn.active {
+            background: #fff;
+            color: #000;
+        }
+
+        .panel {
+            display: none;
+            min-height: 260px;
+            border-top: 1px solid #fff;
+            padding-top: 30px;
+            animation: fade 0.18s ease;
+        }
+
+        .panel.active {
+            display: block;
+        }
+
+        .panel h2 {
+            font-size: clamp(1.35rem, 2.5vw, 1.95rem);
+            font-weight: 600;
+            margin-bottom: 14px;
+        }
+
+        .panel p,
+        .panel li {
+            color: #d1d1d1;
+            line-height: 1.7;
+            max-width: 65ch;
+            font-size: 1.03rem;
+        }
+
+        .panel p {
+            margin-bottom: 14px;
+        }
+
+        .panel ul {
+            list-style: none;
+            display: grid;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .panel a {
             color: #fff;
+            text-decoration: none;
+            border-bottom: 1px solid #666;
+            padding-bottom: 2px;
         }
 
-        @media (max-width: 768px) {
-            .domain {
-                font-size: 2.5rem;
+        .panel a:hover {
+            border-color: #fff;
+        }
+
+        @keyframes fade {
+            from {
+                opacity: 0;
+                transform: translateY(6px);
             }
 
-            .message {
-                font-size: 1rem;
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .site-header {
+                flex-direction: column;
+                align-items: flex-start;
             }
 
-            .container {
-                padding: 2rem 1rem;
+            .panel {
+                min-height: 210px;
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="domain">sen.rip</div>
-        <div class="message">
-            <p>cro docs coming soon</p>
-            <p>check out the
-                <a href="https://github.com/senunderscore/cro">repository</a>
+    <main class="site">
+        <header class="site-header">
+            <h1 class="brand">cro docs</h1>
+            <p class="subtitle">wip</p>
+        </header>
+
+        <nav class="switcher" aria-label="sections">
+            <button class="switch-btn active" data-target="overview" aria-selected="true">overview</button>
+            <button class="switch-btn" data-target="setup" aria-selected="false">setup</button>
+            <button class="switch-btn" data-target="links" aria-selected="false">links</button>
+        </nav>
+
+        <section id="overview" class="panel active">
+            <h2>overview</h2>
+            <p>
+                wip
             </p>
-        </div>
-    </div>
+        </section>
+
+        <section id="setup" class="panel">
+            <h2>setup</h2>
+            <ul>
+                <li>wip</li>
+            </ul>
+        </section>
+
+        <section id="links" class="panel">
+            <h2>links</h2>
+            <ul>
+                <li><a href="https://github.com/senunderscore/cro" target="_blank" rel="noopener noreferrer">github
+                        repository</a></li>
+                <li><a href="https://sen.rip" target="_blank" rel="noopener noreferrer">main website</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <script>
+        const buttons = document.querySelectorAll('.switch-btn');
+        const panels = document.querySelectorAll('.panel');
+
+        buttons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const targetId = button.dataset.target;
+
+                buttons.forEach((btn) => {
+                    btn.classList.remove('active');
+                    btn.setAttribute('aria-selected', 'false');
+                });
+
+                panels.forEach((panel) => {
+                    panel.classList.remove('active');
+                });
+
+                button.classList.add('active');
+                button.setAttribute('aria-selected', 'true');
+
+                const targetPanel = document.getElementById(targetId);
+                if (targetPanel) {
+                    targetPanel.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
