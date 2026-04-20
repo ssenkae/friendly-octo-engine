@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ABU COUNTDOWNNN" />
+    <meta name="theme-color" content="#000000" />
+    <title>abunai countdown</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <style>
+        body.home-page .countdown-head {
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        body.home-page .countdown-head h1 {
+            font-size: 24px;
+            margin: 0 0 4px;
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+
+        body.home-page .countdown-head p {
+            color: #888;
+            font-size: 12px;
+            margin: 0;
+        }
+
+        body.home-page .countdown-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+
+        body.home-page .countdown-unit {
+            background: #232323;
+            border: 1px solid #404040;
+            padding: 10px 6px;
+            text-align: center;
+        }
+
+        body.home-page .countdown-value {
+            color: #fff;
+            font-size: 26px;
+            font-weight: bold;
+            line-height: 1;
+            font-variant-numeric: tabular-nums;
+        }
+
+        body.home-page .countdown-label {
+            color: #777;
+            font-size: 10px;
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+        }
+
+        body.home-page .countdown-status {
+            margin-top: 10px;
+            color: #888;
+            font-size: 12px;
+            text-align: center;
+            min-height: 1em;
+        }
+
+        body.home-page .countdown-status.live {
+            color: #8fb3ff;
+        }
+
+        body.home-page .back-row {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            body.home-page .countdown-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body class="home-page">
+    <video class="bg-video" autoplay muted loop playsinline>
+        <source src="/media/withyou.webm" type="video/webm" />
+    </video>
+    <div class="frosted-overlay"></div>
+
+    <main class="container" aria-live="polite">
+        <section class="card">
+            <div class="countdown-head">
+                <h1>abunai</h1>
+                <p id="targetDate">loading date...</p>
+            </div>
+
+            <div class="countdown-grid" aria-label="Time remaining until Abunai Con">
+                <div class="countdown-unit">
+                    <div class="countdown-value" id="days">00</div>
+                    <div class="countdown-label">days</div>
+                </div>
+                <div class="countdown-unit">
+                    <div class="countdown-value" id="hours">00</div>
+                    <div class="countdown-label">hours</div>
+                </div>
+                <div class="countdown-unit">
+                    <div class="countdown-value" id="minutes">00</div>
+                    <div class="countdown-label">minutes</div>
+                </div>
+                <div class="countdown-unit">
+                    <div class="countdown-value" id="seconds">00</div>
+                    <div class="countdown-label">seconds</div>
+                </div>
+            </div>
+
+            <p class="countdown-status" id="statusText">counting down...</p>
+            <div class="back-row">
+                <a class="link" href="/">back home</a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const targetEpochSeconds = 1786053600;
+        const targetDate = new Date(targetEpochSeconds * 1000);
+
+        const daysEl = document.getElementById("days");
+        const hoursEl = document.getElementById("hours");
+        const minutesEl = document.getElementById("minutes");
+        const secondsEl = document.getElementById("seconds");
+        const statusTextEl = document.getElementById("statusText");
+        const targetDateEl = document.getElementById("targetDate");
+
+        targetDateEl.textContent = targetDate.toLocaleString();
+
+        function pad(value) {
+            return String(value).padStart(2, "0");
+        }
+
+        function updateCountdown() {
+            const now = Date.now();
+            const remainingMs = targetDate.getTime() - now;
+
+            if (remainingMs <= 0) {
+                daysEl.textContent = "00";
+                hoursEl.textContent = "00";
+                minutesEl.textContent = "00";
+                secondsEl.textContent = "00";
+                statusTextEl.textContent = "abunai is NOW!!!";
+                statusTextEl.classList.add("live");
+                return;
+            }
+
+            const totalSeconds = Math.floor(remainingMs / 1000);
+            const days = Math.floor(totalSeconds / 86400);
+            const hours = Math.floor((totalSeconds % 86400) / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+
+            daysEl.textContent = String(days);
+            hoursEl.textContent = pad(hours);
+            minutesEl.textContent = pad(minutes);
+            secondsEl.textContent = pad(seconds);
+            statusTextEl.classList.remove("live");
+            statusTextEl.textContent = "counting down...";
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+
+</html>
