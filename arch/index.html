@@ -2,151 +2,51 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="a lil step-by-step for a stable arch linux experience without losing your mind." />
-    <meta name="theme-color" content="#0f0f0f" />
-    <title>arch linux stable setup</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css" />
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="The entire Arch tutorial" />
+	<meta name="theme-color" content="#0f0f0f" />
+	<title>arch loonix</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/css/style.css" />
 </head>
 
 <body class="arch-page">
-    <video class="bg-video" autoplay muted loop playsinline>
-        <source src="/media/withyou.webm" type="video/webm">
-    </video>
-    <div class="frosted-overlay"></div>
+	<video class="bg-video" autoplay muted loop playsinline>
+		<source src="/media/withyou.webm" type="video/webm">
+	</video>
+	<div class="frosted-overlay"></div>
 
-    <main class="shell">
-        <div class="topbar">
-            <a class="back-link" href="/">go back home</a>
-        </div>
+	<main class="shell">
+		<div class="topbar">
+			<a class="back-link" href="/">go back home</a>
+		</div>
 
-        <section id="prep" class="section">
-            <h2>1. download + boot media</h2>
-            <ol>
-                <li>grab the freshest ISO from <a href="https://archlinux.org/download/" target="_blank" rel="noopener">archlinux.org/download</a>.</li>
-                <li>flash it to a USB stick with whatever tool you like.</li>
-                <li>plug it into your puter, smack the BIOS with a metal pipe, and boot from USB.</li>
-                <li>once you land in the live environment, run this:</li>
-            </ol>
-            <pre><code>pacman -Sy archinstall && archinstall</code></pre>
-        </section>
+		<section class="section">
+			<h1>arch tutorial</h1>
+			<p class="subtitle">you asked for a full guide. here it is.</p>
 
-        <section id="install" class="section">
-            <h2>2. core stuff</h2>
-            <p>go through the menus and set your normal locale/user/timezone stuff. these are the big picks for a stable setup.</p>
+			<div class="block-warning" style="margin-top: 16px; text-align: center;">
+				<p style="font-size: clamp(2.1rem, 12vw, 6rem); line-height: 1; margin: 0; font-weight: 800; letter-spacing: 0.06em;">RTFM</p>
+				<p style="margin-top: 10px; color: var(--text-muted);">(read the fine manual, the friendly manual, the arch wiki, all of it)</p>
+			</div>
 
-            <h3>disk layout</h3>
-            <ul>
-                <li>use <strong>best-effort partition layout</strong> (giga important if you don't need some stupidly retarded sextuple boot).</li>
-                <li>use <strong>btrfs</strong> with <strong>copy-on-write</strong> as filesystem.</li>
-                <li>pick all drives you want wiped and used for arch.</li>
-                <li>optionally encrypt disks if you want the extra safety.</li>
-            </ul>
+			<ol style="margin-top: 14px;">
+				<li>open the <a href="https://wiki.archlinux.org/" target="_blank" rel="noopener">Arch Wiki</a>.</li>
+				<li>read what applies to your hardware.</li>
+				<li>do exactly that.</li>
+				<li>if broken, return to step 1 with more humility.</li>
+			</ol>
 
-            <h3>hardware + services</h3>
-            <ul>
-                <li>audio: <strong>pipewire</strong>.</li>
-                <li>bluetooth: enable it now if you might need it, doing this later is annoying.</li>
-                <li>desktop: <strong>KDE Plasma</strong>.</li>
-                <li>networking: <strong>NetworkManager</strong> with default backend.</li>
-            </ul>
+			<div class="block-tip">
+				bonus: <a href="https://wiki.archlinux.org/title/Installation_guide" target="_blank" rel="noopener">Installation guide</a> and <a href="https://wiki.archlinux.org/title/General_recommendations" target="_blank" rel="noopener">General recommendations</a>.
+			</div>
+		</section>
 
-            <h3>GPU driver choice</h3>
-            <ul>
-                <li>AMD: ATI open-source.</li>
-                <li>NVIDIA: open kernel modules option.</li>
-                <li>Intel: sell your GPU and buy AMD.</li>
-            </ul>
-        </section>
-
-        <section id="menus" class="section">
-            <h2>3. run install + reboot</h2>
-            <p>double check your settings one more time. smack install and go make strawberry tea while it cooks, then reboot.</p>
-        </section>
-
-        <section id="after" class="section">
-            <h2>4. after first boot</h2>
-            <ol>
-                <li>open KDE system settings.</li>
-                <li>set animation speed to about 3 ticks faster than default.</li>
-                <li>scroll down to software update and switch it to manual + after reboot (important).</li>
-                <li>open konsole and run:</li>
-            </ol>
-            <pre><code>curl -fsSL https://christitus.com/linux | sh</code></pre>
-            <p>on the left, hit <strong>system setup</strong> then pick <strong>build prerequisites</strong>, <strong>gaming dependencies</strong>, and whatever else you want.</p>
-
-            <div class="block-warning">
-                yeah this is convenient, but still be smart and check what scripts are doing when you can.
-            </div>
-        </section>
-
-        <section id="apps" class="section">
-            <h2>5. program install rules ( important !!! )</h2>
-            <p>please actually follow these if you want your system to stay chill.</p>
-            <div class="rules">
-                <article class="rule">
-                    <strong>use pacman for:</strong>
-                    <p>browsers, CLI apps, and stuff that needs proper system/file permissions.</p>
-                </article>
-                <article class="rule">
-                    <strong>use flatpak for:</strong>
-                    <p>chat apps, vscodium, email clients, and basically anything electron flavored.</p>
-                </article>
-                <article class="rule">
-                    <strong>use AUR carefully for:</strong>
-                    <p>obscure tools when they are not elsewhere. steam-adjacent stuff is usually fine.</p>
-                </article>
-                <article class="rule">
-                    <strong>avoid from AUR:</strong>
-                    <p>drivers and low-level core bits. do that and you are asking for a dead computer.</p>
-                </article>
-            </div>
-        </section>
-
-        <section id="rollback" class="section">
-            <h2>6. rollback strategy</h2>
-            <p><strong>timeshift</strong> is your oh-no button. use it. before big updates or experiments, take snapshots so you can roll back and move on with life.</p>
-            <div class="block-tip">be very careful with the AUR, and make snapshots a habit.</div>
-        </section>
-
-        <p class="footer">that is pretty much it. enjoy the rabbit hole :3</p>
-    </main>
-
-    <script>
-        document.querySelectorAll('pre > code').forEach((codeBlock) => {
-            const pre = codeBlock.parentElement;
-            const button = document.createElement('button');
-
-            button.type = 'button';
-            button.className = 'copy-code-btn';
-            button.textContent = 'copy';
-            button.setAttribute('aria-label', 'copy code');
-
-            button.addEventListener('click', async () => {
-                try {
-                    await navigator.clipboard.writeText(codeBlock.textContent || '');
-                    button.textContent = 'copied';
-                    button.classList.add('copied');
-
-                    setTimeout(() => {
-                        button.textContent = 'copy';
-                        button.classList.remove('copied');
-                    }, 1200);
-                } catch {
-                    button.textContent = 'failed';
-                    setTimeout(() => {
-                        button.textContent = 'copy';
-                    }, 1200);
-                }
-            });
-
-            pre.appendChild(button);
-        });
-    </script>
+		<p class="footer">this tutorial is complete and technically correct.</p>
+	</main>
 </body>
 
 </html>
